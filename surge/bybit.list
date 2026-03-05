@@ -1,0 +1,10 @@
+# NAME: Bybit
+# AUTHOR: Alma
+# UPDATED: 2026-03-05
+# FORMAT: Surge Rule Set
+DOMAIN-SUFFIX,bybit.com
+DOMAIN-SUFFIX,bytick.com
+DOMAIN-SUFFIX,bybitglobal.com
+DOMAIN-SUFFIX,bybit.nl
+DOMAIN-SUFFIX,bycsi.com
+DOMAIN-KEYWORD,bybit
