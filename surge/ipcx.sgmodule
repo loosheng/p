@@ -1,7 +1,7 @@
 #!name=IP 纯净度 (ip.cx)
 #!desc=基于 ip.cx 查询当前出口 IP 的类型、评分、威胁与代理状态，支持 Surge iOS / Mac
-#!arguments=POLICY:DIRECT,ICON:checkmark.shield
-#!arguments-desc=POLICY：用于检测的策略名（如节点或策略组名），留空走默认规则\nICON：面板图标(SF Symbols)
+#!arguments=POLICY:AUTO,ICON:checkmark.shield
+#!arguments-desc=POLICY：用于检测的策略名（如节点或策略组名），填 AUTO 则按你的分流规则走\nICON：面板图标(SF Symbols)
 
 [Panel]
 ipcx = script-name=ipcx-panel, title=IP 纯净度, content=点击刷新, update-interval=1800

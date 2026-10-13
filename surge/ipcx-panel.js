@@ -1,6 +1,8 @@
 // Surge Panel: IP 纯净度 (ip.cx) — iOS / macOS 通用
 const args = Object.fromEntries((typeof $argument === 'string' ? $argument : '')
   .split('&').filter(Boolean).map(kv => kv.split('=').map(decodeURIComponent)));
+const pol = (args.policy || '').trim();
+const usePol = pol && pol !== 'AUTO' && pol !== '{{{POLICY}}}';
 const req = {
   url: 'https://ip.cx/',
   timeout: 12,
@@ -9,7 +11,7 @@ const req = {
     'Accept-Language': 'zh-CN,zh;q=0.9'
   }
 };
-if (args.policy && args.policy !== '{{{POLICY}}}') req.policy = args.policy;
+if (usePol) req.policy = pol;
 
 const strip = s => s.replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
 
@@ -33,7 +35,7 @@ $httpClient.get(req, (err, resp, body) => {
     `威胁：${f['威胁状态'] || '-'}　代理：${f['代理状态'] || '-'}`
   ];
   $done({
-    title: 'IP 纯净度' + (args.policy && args.policy !== '{{{POLICY}}}' ? ` · ${args.policy}` : ''),
+    title: 'IP 纯净度' + (usePol ? ` · ${pol}` : ''),
     content: lines.join('\n'),
     icon: (args.icon && args.icon !== '{{{ICON}}}') ? args.icon : 'checkmark.shield',
     'icon-color': color
